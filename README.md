@@ -108,14 +108,52 @@
       
        参数名| 说明
        -----|------
-       
        path | 指定删除的数据节点
        version | 指定操作节点的数据版本
        cb | 注册一个回调函数
        ctx | 用于传递上下文信息的对象
        
        
-       `注 删除节点和后续5.3.5的更新数据接口相似，如果节点下还有子节点需要先删除子节点.`  
+       `注： 删除节点和后续5.3.5的更新数据接口相似，如果节点下还有子节点需要先删除子节点.`  
+      
+
+   * 5.3.4 读取数据
+   
+     方法：
+     
+     ````js
+     public List<String> getChildren(final String path, Watcher watcher);
+     public List<String> getChildren(String path, boolean watch);
+     public void getChildren(final String path, Watcher watcher, ChildrenCallback cb, Object ctx);
+     public void getChildren(String path, boolean watch, ChildrenCallback cb,
+     Object ctx);
+     public List<String> getChildren(final String path, Watcher watcher,
+     Stat stat);
+     public List<String> getChildren(String path, boolean watch, Stat stat);
+     public void getChildren(final String path, Watcher watcher,Children2Callback cb, Object ctx);
+     public void getChildren(String path, boolean watch, Children2Callback cb,
+     Object ctx);
+     ````
+     
+     参数说明：
+     
+     参数名 | 说明
+     ------|------- 
+     path | 获取子节点的路径
+     watcher | 注册的Watcher，在获取节点之后如果发生了变更则会向客户端发送通知
+     watch | 是否需要注册一个Watcher
+     cb | 注册一个异步回调函数
+     ctx | 传递上下文信息
+     stat | 节点状态信息
+     
+     补充说明：
+     
+     1. 在注册了Watcher之后，当节点发生变化时，会向客户端发送事件通知，但是不包含最新的节点列表，需要再次手动获取；
+     
+     2. Stat记录节点的状态信息，如创建时的事务Id(cZxid)等，Stat变量在方法执行过程中会被最新的Stat对象替换.
+     
+     
+      
       
 
      
