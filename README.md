@@ -1,6 +1,9 @@
 # ZooKeeper-Demo
 
-> 《从Paxos到Zookeeper》一书实战代码学习记录
+> 《从Paxos到Zookeeper》一书实战代码学习记录，通过笔记加Demo的形式完成本书的学习。
+开始时间：2019.05.06
+
+   
 
 
 ### 第五章 使用ZooKeeper
@@ -12,25 +15,42 @@
     
      create [-s]  [-e]  path  data  acl
      
-     -s ,-e 代表节点特性为：顺序节点或者临时节点。
+     -s ,-e 代表节点特性为：顺序节点或者临时节点.
      
    * 5.2.2 读取
    
      * ls 使用ls命令可以列出指定节点下的所有子节点，只能看到下一级节点。  
-     * get 使用get命令可获取Zookeeper指定节点的数据内容和属性信息。
+     * get 使用get命令可获取Zookeeper指定节点的数据内容和属性信息.
      
    * 5.2.3 更新
    
      set  path  data  [version]
      
      使用set命令可以更新指定节点的数据内容，节点的数据是有版本概念的，version可以
-     指定本次操作是基于ZNode的哪一个数据版本进行更新的。
+     指定本次操作是基于ZNode的哪一个数据版本进行更新的.
      
    * 5.2.4 删除
    
      delete path [version]
      
-     要想删除某一个指定节点，该节点下必须没有子节点的存在
+     要想删除某一个指定节点，该节点下必须没有子节点的存在.
+     
+     
+   #### 5.3 Java客户端API使用
+   
+   * 5.3.1 创建会话
+       
+     构造方法：
+      
+      ```js
+     public ZooKeeper(String connectString, int sessionTimeout, Watcher watcher);
+     public ZooKeeper(String connectString, int sessionTimeout, Watcher watcher, boolean canBeReadOnly);
+     public ZooKeeper(String connectString, int sessionTimeout, Watcher watcher, long sessionId, byte[] sessionPasswd);
+     public ZooKeeper(String connectString, int sessionTimeout, Watcher watcher, long sessionId, byte[] sessionPasswd, boolean canBeReadOnly);
+
+     ```
+   
+
      
      
      
