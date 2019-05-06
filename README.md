@@ -63,7 +63,7 @@
      
    * 5.3.2 创建节点
    
-     构造方法：
+     方法：
      
      ```js
      public String create(String path, byte[] data, List<ACL> acl, CreateMode createMode);
@@ -93,6 +93,33 @@
      path | 传入的path
      ctx | 传入的ctx
      name | 节点的完整路径
+     
+     
+   * 5.3.3 删除节点
+      
+      方法：
+      
+      ````js
+      public void delete(final String path, int version);
+      public void delete(final String path, int version, VoidCallback cb,Object ctx);
+      ````
+      
+      参数说明：
+      
+       参数名| 说明
+       -----|------
+       
+       path | 指定删除的数据节点
+       version | 指定操作节点的数据版本
+       cb | 注册一个回调函数
+       ctx | 用于传递上下文信息的对象
+       
+       
+       `注 删除节点和后续5.3.5的更新数据接口相似，如果节点下还有子节点需要先删除子节点.`  
+      
+
+     
+     
          
 
 
