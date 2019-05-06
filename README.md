@@ -185,7 +185,53 @@
      cb | 异步回调函数
      ctx | 上下文信息对象
      
+   
+   * 5.3.6 检测节点是否存在
      
+      方法：
+      
+      ````js
+      public Stat exists(final String path, Watcher watcher);
+      public Stat exists(String path, boolean watch);
+      public void exists(final String path, Watcher watcher,StatCallback cb, Object ctx);
+      public void exists(String path, boolean watch, StatCallback cb, Object ctx);
+
+      ````
+      
+      参数说明：
+      
+      `参数意义同上，watcher监听 1、节点被创建；2、节点被删除；3、节点被更新. 无论节点是否存在，都会注册watcher`
+      
+   
+   * 5.3.7 权限控制
+    
+     方法：
+     
+     ````js
+     addAuthInfo(String scheme,byte[] auth);
+     ````
+     
+     参数说明：
+     
+     参数名| 说明
+     -----|-----
+     scheme | 权限控制模式 分为 world，auth，digest，ip，super
+     auth | 具体的权限信息
+     
+     
+     `在创建会话之后，调用此方法添加权限信息，之后凡是通过该会话操作都会带上权限信息;
+      需要注意在删除节点的时候，删除子节点需要获取权限，而删除节点本身不需要获取权限`
+     
+     
+     
+     
+
+      
+      
+    
+   
+    
+
      
      
      
