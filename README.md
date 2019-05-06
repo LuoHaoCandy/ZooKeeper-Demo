@@ -49,6 +49,14 @@
      public ZooKeeper(String connectString, int sessionTimeout, Watcher watcher, long sessionId, byte[] sessionPasswd, boolean canBeReadOnly);
 
      ```
+     
+     参数说明：
+     
+     参数名| 说明
+     -----|------
+     connectString | Zookeeper的服务器列表,由英文逗号分开的host
+     
+     
    
 
      
