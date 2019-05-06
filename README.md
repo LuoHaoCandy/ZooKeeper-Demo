@@ -55,6 +55,37 @@
      参数名| 说明
      -----|------
      connectString | Zookeeper的服务器列表,由英文逗号分开的host
+     sessionTimeOut | 会话超时时间，毫秒单位，在此时间内没有进行有效的心跳检测会话关闭
+     watcher | 事件通知处理器
+     canBeReadyOnly | 故障时是否希望继续提供读服务
+     sessionId & sessionPasswd | 一组确定唯一会话，用来恢复会话
+     
+     
+   * 5.3.2 创建节点
+   
+     构造方法：
+     
+     ```js
+     public String create(String path, byte[] data, List<ACL> acl, CreateMode createMode);
+     public void create(String path, byte[] data, List<ACL> acl, CreateMode createMode, StringCallback cb, Object ctx);
+     ```
+     
+     参数说明：
+     
+     参数名| 说明
+     -----|------
+     path | 需要创建数据节点的节点路径
+     data | 一个字节数组，节点创建后的初始内容
+     acl  | 节点的ACL策略
+     createMode | 节点类型
+     cb | 注册一个异步回调函数
+     ctx | 传递上下文对象，可以在回调方法时使用
+     
+     
+
+
+
+     
      
      
    
