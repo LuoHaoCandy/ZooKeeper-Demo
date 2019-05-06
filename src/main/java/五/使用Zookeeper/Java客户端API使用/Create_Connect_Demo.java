@@ -30,7 +30,6 @@ public class Create_Connect_Demo implements Watcher {
     @Override
     public void process(WatchedEvent watchedEvent) {
         if(watchedEvent.getState()== Event.KeeperState.SyncConnected){
-            System.out.println("watchedEvent is "+watchedEvent);
             countDownLatch.countDown();
 
         }

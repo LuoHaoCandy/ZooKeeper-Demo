@@ -81,7 +81,19 @@
      cb | 注册一个异步回调函数
      ctx | 传递上下文对象，可以在回调方法时使用
      
+     异步返回参数说明：
      
+     ```js
+      public void processResult(int rc, String path, Object ctx, String name) ;
+     ```
+     
+     参数名| 说明
+     -----|------
+     rc | 接口响应吗；0-成功 ；-4 客户端和服务端链接已经断开 ； -110 指定节点已经存在 ；-112 会话已过期
+     path | 传入的path
+     ctx | 传入的ctx
+     name | 节点的完整路径
+         
 
 
 
