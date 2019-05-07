@@ -1,7 +1,7 @@
 # ZooKeeper-Demo
 
 > 《从Paxos到Zookeeper》一书实战代码学习记录，通过笔记加Demo的形式完成本书的学习。
-开始时间：2019.05.06
+开始时间：2019.05.06.
 
    
 
@@ -224,7 +224,45 @@
      
      
      
-     
+   #### 5.4 开源客户端
+   
+   ##### _ZkClient_
+   
+ * 创建会话
+   
+   构造方法：
+   
+   ````js
+   public ZkClient(String serverstring);
+   public ZkClient(String zkServers, int connectionTimeout);
+   public ZkClient(String zkServers, int sessionTimeout, int connectionTimeout);
+   public ZkClient(String zkServers, int sessionTimeout, int connectionTimeout,ZkSerializer zkSerializer);
+   public ZkClient(final String zkServers, final int sessionTimeout, final int connectionTimeout, final ZkSerializer zkSerializer, final long operationRetryTimeout);
+   public ZkClient(IZkConnection connection);
+   public ZkClient(IZkConnection connection, int connectionTimeout);
+   public ZkClient(IZkConnection zkConnection, int connectionTimeout, ZkSerializer zkSerializer);
+   ````
+   
+   参数说明：
+   
+   参数名| 说明
+   --------|---------
+   zkServers | 由英文逗号分开的host
+   sessionTimeout | 会话超时时间
+   connectionTimeout | 创建链接时间
+   connection | 连接实现类
+   zkSerializer | 自定义的序列化器
+   
+   
+   补充说明：
+   
+   `ZkClient  允许用户传入一个序列化的实现，并且通过监听的方式完成了原生API的Watcher监听器功能.`
+   
+   
+   
+   
+   
+
 
       
       
