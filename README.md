@@ -228,7 +228,7 @@
    
    ##### _ZkClient_
    
- * 创建会话
+ * 5.4.1创建会话
    
    构造方法：
    
@@ -258,7 +258,69 @@
    
    `ZkClient  允许用户传入一个序列化的实现，并且通过监听的方式完成了原生API的Watcher监听器功能.`
    
+ * 5.4.2创建节点
+ 
+   `和原生API近似,可以同步异步，并且可以创建子节点.`
    
+ * 5.4.3删除节点
+ 
+  `和原生API近似,可以删除子节点.`
+  
+ * 5.4.4读取数据
+ 
+   方法：
+   
+   ````js
+    List<String> getChildren(String path);
+   ````
+  
+   ZkClient引入了Listener概念，客户端可以通过注册相关的事件监听来实现对Zookeeper的服务端事件的订阅。
+   
+   监听节点方法：
+   
+   ````js
+       List<String> subscribeChildChanges(String path,IZkChildListener listener);
+   ````
+   
+   IZkChildListener接口:
+   
+   ````js
+       public void handleChildChange(String parentPath, List<String> currentChilds);
+
+   ````
+   
+   handleChildChange参数说明:
+   
+   参数名| 说明
+   ------|-------
+   parentPath| 子节点变更通知对应的父节点路径
+   currentChilds| 子节点的相对路径列表，如果没有子节点，传入null
+      
+   监听内容方法：
+   
+     ````js
+      void subscribeDataChanges(String path, IZkDataListener listener);
+     ````
+   
+    监听状态方法：
+      
+     ````js
+     void subscribeStateChanges(final IZkStateListener listener);
+     ````
+   
+
+   
+    
+    
+   
+   
+    
+
+ 
+   
+ 
+ 
+  
    
    
    
