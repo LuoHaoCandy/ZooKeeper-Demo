@@ -1,6 +1,7 @@
 package 五.使用Zookeeper.开源客户端.ZkClient;
 
 import org.I0Itec.zkclient.IZkChildListener;
+import org.I0Itec.zkclient.IZkDataListener;
 import org.I0Itec.zkclient.ZkClient;
 
 import java.util.List;
@@ -27,8 +28,17 @@ public class ZkClient_Demo {
         //注册节点变化监听事件
         subscribeChildChanges(zkClient,path);
 
+        //注册内容变化监听事件
+        subscribeDataChanges(zkClient,path);
+
+
         //创建节点
         createNode(zkClient, path);
+        Thread.sleep(1000);
+
+
+        //写数据
+        writeNode(zkClient, path);
         Thread.sleep(1000);
 
 
@@ -47,6 +57,8 @@ public class ZkClient_Demo {
     }
 
 
+
+
     private static void subscribeChildChanges(ZkClient zkClient,String path) {
         //设置监听
         zkClient.subscribeChildChanges(path, new IZkChildListener() {
@@ -56,6 +68,21 @@ public class ZkClient_Demo {
                 System.out.println("parentPath"+parentPath+";currentChilds:"+currentChilds);
             }
         });
+    }
+
+    private static void subscribeDataChanges(ZkClient zkClient, String path) {
+       zkClient.subscribeDataChanges(path, new IZkDataListener() {
+           @Override
+           public void handleDataChange(String dataPath, Object data) throws Exception {
+               System.out.println("handleDataChange----dataPath:"+dataPath+";data:"+data);
+           }
+
+           @Override
+           public void handleDataDeleted(String dataPath) throws Exception {
+               System.out.println("handleDataDeleted----dataPath:"+dataPath);
+
+           }
+       });
     }
 
 
@@ -74,6 +101,10 @@ public class ZkClient_Demo {
     private static void getChildren(ZkClient zkClient, String path) {
         zkClient.getChildren(path);
 
+    }
+
+    private static void writeNode(ZkClient zkClient, String path) {
+        zkClient.writeData(path,"LuoHao");
     }
 
 
