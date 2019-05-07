@@ -332,10 +332,12 @@
     expectedVersion| 预期的版本 CAS
      
    * 5.4.6 检测节点是否存在
+    
+     方法：
    
-   ````js
+     ````js
      boolean exists(final String path);
-   ````
+     ````
     
   ##### _Curator_
   
