@@ -264,7 +264,7 @@
    
  * 5.4.3删除节点
  
-  `和原生API近似,可以删除子节点.`
+   `和原生API近似,可以删除子节点.`
   
  * 5.4.4读取数据&监听事件
  
@@ -334,7 +334,7 @@
    * 5.4.6 检测节点是否存在
    
     ````js
-   boolean exists(final String path);
+     boolean exists(final String path);
     ````
     
   ##### _Curator_
