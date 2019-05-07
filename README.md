@@ -266,9 +266,9 @@
  
   `和原生API近似,可以删除子节点.`
   
- * 5.4.4读取数据
+ * 5.4.4读取数据&监听事件
  
-   方法：
+   (1) 获取节点方法：
    
    ````js
     List<String> getChildren(String path);
@@ -296,17 +296,55 @@
    parentPath| 子节点变更通知对应的父节点路径
    currentChilds| 子节点的相对路径列表，如果没有子节点，传入null
       
-   监听内容方法：
-   
-     ````js
-      void subscribeDataChanges(String path, IZkDataListener listener);
-     ````
-   
     监听状态方法：
       
      ````js
      void subscribeStateChanges(final IZkStateListener listener);
      ````
+     
+     (2) 获取内容方法：
+     
+     ````js
+     <T extends Object> T readData(String path);
+     <T extends Object> T readData(String path, boolean returnNullIfPathNotExists);
+     <T extends Object> T readData(final String path, final Stat stat, final boolean watch);
+     ````
+     监听内容方法：
+        
+      ````js
+           void subscribeDataChanges(String path, IZkDataListener listener);
+      ````
+     
+  * 5.4.5更新数据
+    
+    方法：
+    
+    ````js
+    writeData(String path, Object object);
+    writeData(final String path, Object datat, final int expectedVersion);
+    ````
+    参数说明：
+    
+    参数名| 说明
+    ------|------
+    path | 数据节点的完整节点路径
+    data | 数据内容，可以是null
+    expectedVersion| 预期的版本 CAS
+     
+   * 5.4.6 检测节点是否存在
+   
+   ````js
+   boolean exists(final String path);
+   ````
+   
+   
+  
+
+
+     
+      
+     
+     
    
 
    
